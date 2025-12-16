@@ -23,6 +23,8 @@ set relativenumber
 set scrolloff=12
 set wildignore+=*/node_modules/*,*/dist/*,*/build/*,*/__pycache__/*,*/*-env/*,*.db
 set noshowmode  " Hide mode indicator since lightline shows it
+set splitright
+set ignorecase
 
 " NERDTree toggle
 nmap <F6> :NERDTreeToggle<CR>
