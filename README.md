@@ -4,9 +4,9 @@ This repository contains my personal configuration files (dotfiles), managed usi
 
 The goal is simple:
 
-* Keep all configuration in one version-controlled place
-* Recreate my setup quickly on a new machine
-* Avoid tracking generated files or system-specific junk
+-   Keep all configuration in one version-controlled place
+-   Recreate my setup quickly on a new machine
+-   Avoid tracking generated files or system-specific junk
 
 If you are reading this because things broke or you cloned this on a fresh system, follow the steps below **in order**.
 
@@ -16,8 +16,8 @@ If you are reading this because things broke or you cloned this on a fresh syste
 
 Make sure these are installed first:
 
-* `git`
-* `stow`
+-   `git`
+-   `stow`
 
 On Arch-based systems:
 
@@ -65,7 +65,7 @@ Generated files (plugins, caches, downloads) are intentionally excluded.
 
 ```sh
 cd ~
-git clone <REPO_URL> .dotfiles
+git clone https://github.com/Sujal-Gaha/dotfiles.git .dotfiles
 cd .dotfiles
 ```
 
@@ -99,8 +99,8 @@ This will create symlinks in `$HOME` pointing back into `.dotfiles`.
 
 ## Vim Notes
 
-* Plugin directories such as `.vim/autoload` and `.vim/plugged` are **not tracked**
-* They are recreated automatically by the plugin manager
+-   Plugin directories such as `.vim/autoload` and `.vim/plugged` are **not tracked**
+-   They are recreated automatically by the plugin manager
 
 After stowing Vim configs, open Vim and install plugins:
 
@@ -156,9 +156,9 @@ stow zsh
 
 ## Important Warnings
 
-* Do **not** commit generated files (plugins, caches, history)
-* Do **not** use `stow --adopt` except for one-time migrations
-* If something goes wrong, `stow -D <package>` cleanly removes symlinks
+-   Do **not** commit generated files (plugins, caches, history)
+-   Do **not** use `stow --adopt` except for one-time migrations
+-   If something goes wrong, `stow -D <package>` cleanly removes symlinks
 
 ---
 
@@ -178,8 +178,8 @@ Nothing in `$HOME` should be manually copied.
 
 ## Philosophy
 
-* Dotfiles track **intent**, not state
-* If a file can be regenerated, it doesn’t belong here
-* Simple layouts beat clever automation
+-   Dotfiles track **intent**, not state
+-   If a file can be regenerated, it doesn’t belong here
+-   Simple layouts beat clever automation
 
 If this repo feels boring, it’s doing its job.
