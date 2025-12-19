@@ -25,9 +25,19 @@ set wildignore+=*/node_modules/*,*/dist/*,*/build/*,*/__pycache__/*,*/*-env/*,*.
 set noshowmode  " Hide mode indicator since lightline shows it
 set splitright
 set ignorecase
+set hlsearch
+set smartcase
 
+" ===============================
+" NERDTree Configuration
+" ===============================
 " NERDTree toggle
 nmap <F6> :NERDTreeToggle<CR>
+" Show hidden files
+let NERDTreeShowHidden=1
+
+" Automatically open NERDTree
+autocmd vimenter * NERDTree
 
 " ===============================
 " FZF Configuration
