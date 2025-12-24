@@ -104,6 +104,8 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_set_highlights = 0
 let g:ale_virtualtext_cursor = 'disabled'
 
+let g:ale_python_flake8_options = '--max-line-length=120'
+
 " Fix files on save
 let g:ale_fix_on_save = 1
 
