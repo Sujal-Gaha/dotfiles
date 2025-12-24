@@ -28,6 +28,21 @@ set ignorecase
 set hlsearch
 set smartcase
 
+set foldmethod=syntax
+set foldenable
+set foldcolumn=1
+set foldlevelstart=99
+set foldtext=CustomFoldText()
+
+highlight Folded guifg=#c0caf5 guibg=#1f2335 ctermfg=252 ctermbg=235 cterm=NONE
+
+
+function! CustomFoldText()
+  let line = getline(v:foldstart)
+  let lines = v:foldend - v:foldstart + 1
+  return printf('  ▶ %s  [%d lines]', substitute(line, '^\s*', '', ''), lines)
+endfunction
+
 " ===============================
 " NERDTree Configuration
 " ===============================

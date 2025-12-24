@@ -35,5 +35,7 @@
 			}
 		}
 	},
-	"pyright.inlayHints.parameterTypes": false
+	"pyright.inlayHints.parameterTypes": false,
+	"pyright.inlayHints.variableTypes": false,
+	"pyright.inlayHints.functionReturnTypes": false
 }
