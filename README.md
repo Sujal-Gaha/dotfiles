@@ -77,7 +77,7 @@ Always do a dry run first:
 
 ```sh
 stow -n vim
-tow -n git
+stow -n git
 ```
 
 This shows exactly what symlinks will be created.
