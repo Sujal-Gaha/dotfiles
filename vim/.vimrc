@@ -11,6 +11,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install'  }
 Plug 'itchyny/lightline.vim'
 Plug 'dense-analysis/ale'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
