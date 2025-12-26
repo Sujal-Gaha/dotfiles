@@ -1,7 +1,7 @@
 echo "Setting up dotfiles..."
 
 # List of packages to stow
-PACKAGES="vim git fish"
+PACKAGES="vim git fish kitty"
 
 # Dry run first
 for pkg in $PACKAGES; do
