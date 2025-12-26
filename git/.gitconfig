@@ -5,3 +5,15 @@
 	helper = cache
 [core]
 	editor = vim
+	pager = less -RFX
+[color]
+	ui = auto
+[color "diff"]
+	meta = blue bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[pager]
+	diff = less -RFX
+[diff]
+	colorWords = true
