@@ -37,5 +37,10 @@
 	},
 	"pyright.inlayHints.parameterTypes": false,
 	"pyright.inlayHints.variableTypes": false,
-	"pyright.inlayHints.functionReturnTypes": false
+	"pyright.inlayHints.functionReturnTypes": false,
+
+	"python.linting.enabled": true,
+	"python.analysis.autoImportCompletions": true,
+	"python.analysis.autoSearchPaths": true,
+	"python.analysis.typeCheckingMode": "basic"
 }
