@@ -53,7 +53,9 @@ nmap <F6> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 " Automatically open NERDTree
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
+autocmd vimenter * if argc() == 0 | NERDTree | wincmd p | endif
+
 
 " ===============================
 " FZF Configuration
