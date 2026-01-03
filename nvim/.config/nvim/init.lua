@@ -1,0 +1,51 @@
+-- Basic editor settings 
+vim.opt.number = true         -- Show current line number
+vim.opt.relativenumber = true -- Show relative line numbers (great for motions like 5j)
+vim.opt.mouse = "a"           -- Enable mouse in all modes (useful in terminal)
+vim.opt.clipboard = "unnamedplus"  -- Sync with system clipboard (+ register)
+vim.opt.breakindent = true    -- Indent wrapped lines
+vim.opt.undofile = true       -- Persistent undo across sessions
+vim.opt.ignorecase = true     -- Case-insensitive search...
+vim.opt.smartcase = true      -- ...unless uppercase is used
+vim.opt.updatetime = 250      -- Faster completion and CursorHold events
+vim.opt.timeoutlen = 300      -- Shorter leader key timeout
+vim.opt.splitright = true     -- Vertical splits open to the right
+vim.opt.splitbelow = true     -- Horizontal splits open below
+vim.opt.scrolloff = 8         -- Keep 8 lines visible above/below cursor
+vim.opt.sidescrolloff = 8     -- Same for horizontal
+vim.opt.inccommand = "split"  -- Live preview for :s/// commands
+
+-- Better indentation
+vim.opt.expandtab = true      -- Use spaces instead of tabs
+vim.opt.shiftwidth = 2        -- 2 spaces for indent
+vim.opt.tabstop = 2           -- 2 spaces for tabs
+vim.opt.smartindent = true
+
+-- Set leader to space
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Use the terminal's background color (critical for Kitty transparency)
+vim.opt.background = "dark"  -- Or "light" if your Kitty is light-themed
+
+-- Clear any explicit background highlight (ensures transparency works)
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })  -- For floating windows (e.g., LSP hover)
+
+-- Kitty-specific fix for background erase issues
+vim.opt.termguicolors = true  -- Enable true colors (usually already on)
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", 
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup("plugins")  -- This loads plugins from lua/plugins/
