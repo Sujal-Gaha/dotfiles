@@ -446,6 +446,7 @@
 /home/sujal/.config/quickshell/ii/modules/common/widgets/SelectionDialog.qml
 /home/sujal/.config/quickshell/ii/modules/common/widgets/SelectionGroupButton.qml
 /home/sujal/.config/quickshell/ii/modules/common/widgets/shapes/example.qml
+/home/sujal/.config/quickshell/ii/modules/common/widgets/shapes/example-squircle.qml
 /home/sujal/.config/quickshell/ii/modules/common/widgets/shapes/geometry/offset.js
 /home/sujal/.config/quickshell/ii/modules/common/widgets/shapes/.git
 /home/sujal/.config/quickshell/ii/modules/common/widgets/shapes/.gitignore
@@ -910,6 +911,7 @@
 /home/sujal/.config/quickshell/ii/services/EasyEffects.qml
 /home/sujal/.config/quickshell/ii/services/Emojis.qml
 /home/sujal/.config/quickshell/ii/services/FirstRunExperience.qml
+/home/sujal/.config/quickshell/ii/services/GlobalFocusGrab.qml
 /home/sujal/.config/quickshell/ii/services/HyprlandData.qml
 /home/sujal/.config/quickshell/ii/services/HyprlandKeybinds.qml
 /home/sujal/.config/quickshell/ii/services/HyprlandXkb.qml
