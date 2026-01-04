@@ -27,6 +27,8 @@ return {
 				},
 				ruff_lsp = {},
 				prismals = {},
+				dockerls = {},
+				docker_compose_language_service = {},
 			}
 
 			-- Define configs using the new Neovim LSP API
