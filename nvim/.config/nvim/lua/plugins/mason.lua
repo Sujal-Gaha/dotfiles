@@ -15,6 +15,8 @@ return {
 					"markdownlint-cli2",
 					"markdown-toc",
 					"js-debug-adapter",
+					"black",
+					"prettier",
 				},
 			})
 		end,
