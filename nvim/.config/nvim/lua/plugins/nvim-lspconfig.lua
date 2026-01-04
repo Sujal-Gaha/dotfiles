@@ -26,6 +26,7 @@ return {
 					},
 				},
 				ruff_lsp = {},
+				prismals = {},
 			}
 
 			-- Define configs using the new Neovim LSP API
