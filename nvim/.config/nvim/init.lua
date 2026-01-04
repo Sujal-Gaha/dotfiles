@@ -52,17 +52,23 @@ require("lazy").setup("plugins") -- This loads plugins from lua/plugins/
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		if not client then
+			return
+		end
+
 		local opts = { buffer = ev.buf, silent = true }
 
-		-- Navigation
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		-- Common keymaps for all LSP servers
+		-- Navigation (using Telescope)
+		vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+		vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
 
 		-- Info
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, opts) -- Changed from <C-k> to avoid conflict
 
 		-- Refactor
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
@@ -73,8 +79,56 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
 
-		vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-		vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
-		vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+		-- Disable formatting for all servers (use conform.nvim or similar)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
+
+		-- Server-specific configurations
+		if client.name == "ruff" or client.name == "ruff_lsp" then
+			-- Disable hover for ruff (let pyright handle it)
+			client.server_capabilities.hoverProvider = false
+
+			-- Organize imports for Python
+			vim.keymap.set("n", "<leader>co", function()
+				vim.lsp.buf.code_action({
+					context = { only = { "source.organizeImports" } },
+					apply = true,
+				})
+			end, { buffer = ev.buf, desc = "Organize Imports" })
+		end
+
+		if client.name == "vtsls" then
+			-- Organize imports for TypeScript/JavaScript
+			vim.keymap.set("n", "<leader>co", function()
+				vim.lsp.buf.code_action({
+					context = { only = { "source.organizeImports" } },
+					apply = true,
+				})
+			end, { buffer = ev.buf, desc = "Organize Imports" })
+
+			-- Add missing imports
+			vim.keymap.set("n", "<leader>cM", function()
+				vim.lsp.buf.code_action({
+					context = { only = { "source.addMissingImports.ts" } },
+					apply = true,
+				})
+			end, { buffer = ev.buf, desc = "Add missing imports" })
+
+			-- Remove unused imports
+			vim.keymap.set("n", "<leader>cu", function()
+				vim.lsp.buf.code_action({
+					context = { only = { "source.removeUnused.ts" } },
+					apply = true,
+				})
+			end, { buffer = ev.buf, desc = "Remove unused imports" })
+
+			-- Fix all diagnostics
+			vim.keymap.set("n", "<leader>cD", function()
+				vim.lsp.buf.code_action({
+					context = { only = { "source.fixAll.ts" } },
+					apply = true,
+				})
+			end, { buffer = ev.buf, desc = "Fix all diagnostics" })
+		end
 	end,
 })

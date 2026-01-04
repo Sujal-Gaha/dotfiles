@@ -14,6 +14,7 @@ return {
 					"hadolint",
 					"markdownlint-cli2",
 					"markdown-toc",
+					"js-debug-adapter",
 				},
 			})
 		end,
