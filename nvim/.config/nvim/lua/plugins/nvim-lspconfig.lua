@@ -4,6 +4,7 @@ return {
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"b0o/SchemaStore.nvim",
+			"folke/neoconf.nvim",
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
