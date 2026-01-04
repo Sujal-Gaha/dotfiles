@@ -14,9 +14,16 @@ return {
 
 			telescope.setup({
 				defaults = {
-					-- Optional: Better layout
 					layout_strategy = "horizontal",
 					layout_config = { horizontal = { preview_width = 0.55 } },
+					file_ignore_patterns = {
+						".git/",
+						".venv/",
+						"node_modules",
+						"__generated__",
+						"dist",
+						"__pycache__",
+					},
 				},
 				extensions = {
 					fzf = {
@@ -24,6 +31,12 @@ return {
 						override_generic_sorter = true,
 						override_file_sorter = true,
 						case_mode = "smart_case",
+					},
+				},
+				pickers = {
+					find_files = {
+						hidden = true,
+						no_ignore = true,
 					},
 				},
 			})
