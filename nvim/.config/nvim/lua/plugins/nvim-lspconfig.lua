@@ -1,7 +1,10 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = { "williamboman/mason-lspconfig.nvim" },
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+			"b0o/SchemaStore.nvim",
+		},
 		config = function()
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -29,6 +32,20 @@ return {
 				prismals = {},
 				dockerls = {},
 				docker_compose_language_service = {},
+				jsonls = {
+					before_init = function(_, new_config)
+						new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+						vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+					end,
+					settings = {
+						json = {
+							format = {
+								enable = true,
+							},
+							validate = { enable = true },
+						},
+					},
+				},
 			}
 
 			-- Define configs using the new Neovim LSP API
