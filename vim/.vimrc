@@ -35,6 +35,8 @@ set foldcolumn=1
 set foldlevelstart=99
 set foldtext=CustomFoldText()
 
+let mapleader = " "
+
 highlight Folded guifg=#c0caf5 guibg=#1f2335 ctermfg=252 ctermbg=235 cterm=NONE
 
 
@@ -48,7 +50,7 @@ endfunction
 " NERDTree Configuration
 " ===============================
 " NERDTree toggle
-nmap <F6> :NERDTreeToggle<CR>
+nmap <leader>e :NERDTreeToggle<CR>
 " Show hidden files
 let NERDTreeShowHidden=1
 
@@ -70,7 +72,7 @@ nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :Rg<CR>
 
 " Search all files (including non-git files)
-nnoremap <Leader>p :Files<CR>
+nnoremap <leader>p :Files<CR>
 
 " ===============================
 " Lightline Configuration

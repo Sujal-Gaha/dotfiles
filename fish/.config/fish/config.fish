@@ -58,6 +58,6 @@ if status is-interactive # Commands to run in interactive sessions can go here
     alias .5 'cd ../../../../..'
 
     alias vi 'vim'
-    alias vim 'nvim'
+    # alias vim 'nvim'
 
 end

@@ -18,6 +18,7 @@ return {
 				"dockerfile",
 				"sql",
 				"astro",
+				"tsx",
 			}, -- Add languages you want
 			auto_install = true, -- Automatically install missing parsers
 			highlight = { enable = true, additional_vim_regex_highlighting = false },
