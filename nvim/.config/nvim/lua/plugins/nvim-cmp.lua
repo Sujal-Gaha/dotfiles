@@ -7,7 +7,6 @@ return {
 		},
 		config = function()
 			local cmp = require("cmp")
-			local lspkind = require("lspkind") -- optional: if you use lspkind for icons
 
 			cmp.setup({
 				mapping = {
