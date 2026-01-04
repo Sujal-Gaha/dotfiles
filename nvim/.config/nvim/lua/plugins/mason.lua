@@ -18,7 +18,7 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright" },  -- Add more servers here
+        ensure_installed = { "lua_ls", "pyright", "ts_ls" },  -- Add more servers here
         -- automatic_installation = true,  -- Optional: auto-install missing servers
       })
     end
@@ -28,6 +28,7 @@ return {
     dependencies = { "williamboman/mason-lspconfig.nvim" },
     config = function()
       local lspconfig = require("lspconfig")
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       -- Custom settings for specific servers (e.g., lua_ls)
       local server_configs = {
@@ -44,11 +45,40 @@ return {
 
       -- Define configs using the new Neovim LSP API
       for server, config in pairs(server_configs) do
-        vim.lsp.config(server, config)
+        config.capabilities = capabilities
+        vim.lsp.config[server] = config
       end
 
       -- Optional: Define empty/default configs for other servers if you want
       -- vim.lsp.config("pyright", {})  -- Example for pyright with defaults
+    end
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
+    config = function()
+      local cmp = require("cmp")
+
+
+      cmp.setup({
+        mapping = {
+          ["<C-j>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            else
+              cmp.complete()
+            end
+          end, {"i", "s" }),
+
+          ["<C-k>"] = cmp.mapping.select_prev_item(),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<Esc>"] = cmp.mapping.abort(),
+        },
+
+        sources = {
+          { name = "nvim_lsp" }
+        }
+      })
     end
   }
 }
