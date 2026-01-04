@@ -19,11 +19,13 @@ return {
 				"sql",
 				"astro",
 				"tsx",
-			}, -- Add languages you want
-			auto_install = true, -- Automatically install missing parsers
+				"ninja",
+				"rst",
+			},
+			auto_install = true,
 			highlight = { enable = true, additional_vim_regex_highlighting = false },
 			indent = { enable = true },
-			-- Add other modules if needed, e.g., incremental_selection = { enable = true }
+			incremental_selection = { enable = true },
 		},
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
