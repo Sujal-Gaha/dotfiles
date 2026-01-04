@@ -46,6 +46,7 @@ return {
 						},
 					},
 				},
+				marksman = {},
 			}
 
 			-- Define configs using the new Neovim LSP API

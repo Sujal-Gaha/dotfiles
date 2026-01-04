@@ -10,7 +10,11 @@ return {
 						package_uninstalled = "✗",
 					},
 				},
-				ensure_installed = { "hadolint" },
+				ensure_installed = {
+					"hadolint",
+					"markdownlint-cli2",
+					"markdown-toc",
+				},
 			})
 		end,
 	},
