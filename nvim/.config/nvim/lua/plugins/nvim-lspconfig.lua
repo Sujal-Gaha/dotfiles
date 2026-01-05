@@ -3,11 +3,10 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
-			"b0o/SchemaStore.nvim",
+			"b0o/schemastore.nvim",
 			"folke/neoconf.nvim",
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			-- Custom settings for specific servers (e.g., lua_ls)
