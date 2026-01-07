@@ -17,6 +17,7 @@ return {
 					"js-debug-adapter",
 					"black",
 					"prettier",
+					"ruff",
 				},
 			})
 		end,

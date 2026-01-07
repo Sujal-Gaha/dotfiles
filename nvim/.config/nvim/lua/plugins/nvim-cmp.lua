@@ -9,16 +9,23 @@ return {
 			local cmp = require("cmp")
 
 			cmp.setup({
+				preselect = cmp.PreselectMode.Item,
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
 				mapping = {
-					["<C-j>"] = cmp.mapping(function(fallback)
+					["<C-j>"] = cmp.mapping(function()
 						if cmp.visible() then
 							cmp.select_next_item()
 						else
 							cmp.complete()
 						end
 					end, { "i", "s" }),
+
 					["<C-k>"] = cmp.mapping.select_prev_item(),
+
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
+
 					["<Esc>"] = cmp.mapping.abort(),
 				},
 				sources = {
