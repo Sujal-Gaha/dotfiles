@@ -11,8 +11,8 @@ vim.opt.updatetime = 250 -- Faster completion and CursorHold events
 vim.opt.timeoutlen = 300 -- Shorter leader key timeout
 vim.opt.splitright = true -- Vertical splits open to the right
 vim.opt.splitbelow = true -- Horizontal splits open below
-vim.opt.scrolloff = 8 -- Keep 8 lines visible above/below cursor
-vim.opt.sidescrolloff = 8 -- Same for horizontal
+vim.opt.scrolloff = 12 -- Keep 12 lines visible above/below cursor
+vim.opt.sidescrolloff = 12 -- Same for horizontal
 vim.opt.inccommand = "split" -- Live preview for :s/// commands
 
 vim.opt.confirm = true

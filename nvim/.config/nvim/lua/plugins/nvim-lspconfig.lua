@@ -28,7 +28,15 @@ return {
 						},
 					},
 				},
-				ruff_lsp = {},
+				ruff_lsp = {
+					cmd_env = { RUFF_TRACE = "messages" },
+
+					init_options = {
+						settings = {
+							logLevel = "error",
+						},
+					},
+				},
 				prismals = {},
 				dockerls = {},
 				docker_compose_language_service = {},
