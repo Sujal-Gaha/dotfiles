@@ -9,7 +9,6 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			-- Custom settings for specific servers (e.g., lua_ls)
 			local server_configs = {
 				lua_ls = {
 					settings = {
