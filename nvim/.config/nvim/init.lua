@@ -17,8 +17,6 @@ vim.opt.inccommand = "split" -- Live preview for :s/// commands
 
 vim.opt.confirm = true
 
-vim.api.nvim_command('command! W execute "write!"')
-
 -- Better indentation
 vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.shiftwidth = 2 -- 2 spaces for indent

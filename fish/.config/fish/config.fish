@@ -24,14 +24,6 @@ if status is-interactive # Commands to run in interactive sessions can go here
     alias clear "printf '\033[2J\033[3J\033[1;1H'"
     alias q 'qs -c ii'
 
-    # Git aliases
-    alias g 'git'
-    alias ga 'git add'
-    alias gaa 'git add --all'
-    alias gb 'git branch'
-    alias gs 'git status'
-    alias gc 'git commit'
-
     # Helpful aliases
     alias l 'eza -lh --icons=auto'
     alias la 'ls -lAh'
@@ -59,5 +51,8 @@ if status is-interactive # Commands to run in interactive sessions can go here
 
     alias vi 'vim'
     # alias vim 'nvim'
+    alias v "nvim"
+    alias n "nvim"
+    alias z "zed"
 
 end
