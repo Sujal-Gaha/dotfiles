@@ -9,7 +9,7 @@ return {
 				},
 				view = {
 					width = 30, -- Sidebar width
-					side = "left",
+					side = "right",
 				},
 				renderer = {
 					group_empty = true, -- Collapse empty folders
