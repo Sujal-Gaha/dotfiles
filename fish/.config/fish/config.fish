@@ -7,6 +7,7 @@ function fish_prompt -d "Write out the prompt"
 end
 
 set aurhelper 'yay'
+set -gx DB_MANAGER_PATH "$HOME/programming/personal/db-manager"
 
 if status is-interactive # Commands to run in interactive sessions can go here
 
@@ -53,6 +54,6 @@ if status is-interactive # Commands to run in interactive sessions can go here
     # alias vim 'nvim'
     alias v "nvim"
     alias n "nvim"
-    alias z "zed"
+    alias z "zed ."
 
 end
