@@ -9,7 +9,7 @@ return {
 				},
 				view = {
 					width = 30, -- Sidebar width
-					side = "right",
+					side = "left",
 				},
 				renderer = {
 					group_empty = true, -- Collapse empty folders
@@ -27,6 +27,11 @@ return {
 				git = {
 					enable = true,
 					ignore = false, -- Show git-ignored files
+				},
+				filesystem_watchers = {
+					ignore_dirs = {
+						"chroma_data",
+					},
 				},
 			})
 		end,
