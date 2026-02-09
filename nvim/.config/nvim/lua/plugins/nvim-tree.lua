@@ -31,6 +31,7 @@ return {
 				filesystem_watchers = {
 					ignore_dirs = {
 						"chroma_data",
+						"logs",
 					},
 				},
 			})
