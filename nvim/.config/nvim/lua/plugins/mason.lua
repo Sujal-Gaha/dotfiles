@@ -13,7 +13,6 @@ return {
 				ensure_installed = {
 					"hadolint",
 					"markdownlint-cli2",
-					"markdown-toc",
 					"js-debug-adapter",
 					"black",
 					"prettier",

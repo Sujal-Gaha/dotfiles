@@ -1,3 +1,4 @@
+require("plugins.dotenv")
 -- Basic editor settings
 vim.opt.number = true -- Show current line number
 vim.opt.relativenumber = true -- Show relative line numbers (great for motions like 5j)

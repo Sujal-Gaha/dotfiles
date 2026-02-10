@@ -23,6 +23,8 @@ return {
 						"__generated__",
 						"dist",
 						"__pycache__",
+						"logs",
+						"data",
 					},
 				},
 				extensions = {
