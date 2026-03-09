@@ -91,3 +91,8 @@ label { # Status
     halign = left
     valign = top
 }
+
+general {
+    no_fade_in = true
+    immediate_render = true
+}
