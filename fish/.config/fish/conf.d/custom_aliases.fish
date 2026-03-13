@@ -31,3 +31,4 @@ alias vi 'vim'
 alias v "nvim"
 alias n "nvim"
 alias z "zed ."
+alias e "exit"
