@@ -135,3 +135,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 	end,
 })
+
+-- Force-link Treesitter groups to standard Vim groups
+vim.api.nvim_set_hl(0, "@keyword", { link = "Keyword" })
+vim.api.nvim_set_hl(0, "@function", { link = "Function" })
+vim.api.nvim_set_hl(0, "@variable", { link = "Identifier" })
+vim.api.nvim_set_hl(0, "@string", { link = "String" })
+vim.api.nvim_set_hl(0, "@type", { link = "Type" })
+vim.api.nvim_set_hl(0, "@constant", { link = "Constant" })
