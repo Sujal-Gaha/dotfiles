@@ -3,12 +3,19 @@ return {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
+			"saadparwaiz1/cmp_luasnip",
 			{ "roobert/tailwindcss-colorizer-cmp.nvim", opts = {} },
 		},
 		config = function()
 			local cmp = require("cmp")
+			local luasnip = require("luasnip")
 
 			cmp.setup({
+				snippet = {
+					expand = function(args)
+						luasnip.lsp_expand(args.body)
+					end,
+				},
 				preselect = cmp.PreselectMode.Item,
 				completion = {
 					completeopt = "menu,menuone,noinsert",
@@ -30,6 +37,7 @@ return {
 				},
 				sources = {
 					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
 				},
 				formatting = {
 					format = function(entry, item)

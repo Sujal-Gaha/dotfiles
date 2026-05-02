@@ -1,4 +1,13 @@
--- This file is for general keymaps and LSP-specific mappings
+-- 1. General keymaps
+-- These are always active
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-f>", "<C-f>zz")
+vim.keymap.set("n", "<C-b>", "<C-b>zz")
+vim.keymap.set("n", "Y", "yy")
+
+-- 2. LSP-Specific Mappings
+-- These only activate when an LSP is attached to the buffer
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		local opts = { buffer = ev.buf, silent = true }
