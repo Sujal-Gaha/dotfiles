@@ -19,4 +19,19 @@ const {} = ({}) => {{
 			{ i(1, "name"), i(2, "args"), i(3, "// body") }
 		)
 	),
+
+	-- tryc -> try-catch block
+	s(
+		"tryc",
+		fmt(
+			[[
+      try {{
+        {}
+      }} catch (e) {{
+        {}
+      }}
+      ]],
+			{ i(1, "body"), i(2, "error") }
+		)
+	),
 }

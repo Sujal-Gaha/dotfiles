@@ -19,12 +19,12 @@ return {
 					file_ignore_patterns = {
 						".git/",
 						".venv/",
+						".next/",
 						"node_modules",
 						"__generated__",
 						"dist",
 						"__pycache__",
 						"logs",
-						"data",
 					},
 				},
 				extensions = {

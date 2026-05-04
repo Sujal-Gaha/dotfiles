@@ -28,4 +28,18 @@ def {}({}):
 			{ i(1, "function_name"), i(2, "args"), i(3, "Docstring"), i(4, "pass") }
 		)
 	),
+
+	-- trye -> try-except block
+	s(
+		"trye",
+		fmt(
+			[[
+try:
+    {}
+except {}:
+    {}
+]],
+			{ i(1, "pass"), i(2, "Exception"), i(3, "raise") }
+		)
+	),
 }
