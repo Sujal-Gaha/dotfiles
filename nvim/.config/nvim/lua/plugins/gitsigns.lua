@@ -17,6 +17,14 @@ return {
 				topdelete = { text = "" },
 				changedelete = { text = "▎" },
 			},
+			current_line_blame = true, -- Enables the "ghost text" blame
+			current_line_blame_opts = {
+				virt_text = true,
+				virt_text_pos = "eol",
+				delay = 500,
+				ignore_whitespace = false,
+			},
+			current_line_blame_formatter = "    <author> • <author_time:%R> • <summary>",
 			on_attach = function(buffer)
 				local gs = package.loaded.gitsigns
 
