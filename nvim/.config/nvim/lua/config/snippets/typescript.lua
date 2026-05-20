@@ -50,4 +50,15 @@ interface {} {{
 			{ i(1, "body"), i(2, "error") }
 		)
 	),
+
+	-- zin -> z.infer<typeof [Schema]>
+	s(
+		"zin",
+		fmt(
+			[[
+      z.infer<typeof {}>
+      ]],
+			{ i(1, "schema") }
+		)
+	),
 }

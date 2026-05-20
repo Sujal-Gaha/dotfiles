@@ -18,7 +18,15 @@ return {
 					},
 				},
 				pyright = {},
-				ts_ls = {},
+				ts_ls = {
+					settings = {
+						typescript = {
+							tsserver = {
+								maxTsServerMemory = 8192,
+							},
+						},
+					},
+				},
 				ruff = {
 					cmd_env = { RUFF_TRACE = "messages" },
 					init_options = {
