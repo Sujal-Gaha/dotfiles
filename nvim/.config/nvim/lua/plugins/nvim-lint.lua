@@ -11,7 +11,7 @@ return {
 				python = { "ruff" },
 			}
 
-			lint.linters.ruff = require("lint").linters.ruff or {}
+			lint.linters.ruff = lint.linters.ruff or {}
 			lint.linters.ruff.args = {
 				"check",
 				"--force-exclude",

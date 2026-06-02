@@ -30,14 +30,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- Diagnostics
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+		vim.keymap.set("n", "<leader>de", vim.diagnostic.open_float, opts)
 
 		-- Formatting handled by conform.nvim
 		client.server_capabilities.documentFormattingProvider = false
 
 		-- Language Specific Organizers
-		if client.name == "ruff" or client.name == "ruff_lsp" then
-			client.server_capabilities.hoverProvider = false
+		if client.name == "ruff" then
 			vim.keymap.set("n", "<leader>co", function()
 				vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
 			end, { buffer = ev.buf, desc = "Organize Imports" })

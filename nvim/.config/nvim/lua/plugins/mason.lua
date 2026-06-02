@@ -10,14 +10,6 @@ return {
 						package_uninstalled = "✗",
 					},
 				},
-				ensure_installed = {
-					"hadolint",
-					"markdownlint-cli2",
-					"js-debug-adapter",
-					"black",
-					"prettier",
-					"ruff",
-				},
 			})
 		end,
 	},

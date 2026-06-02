@@ -35,15 +35,6 @@ return {
 						},
 					},
 				},
-				ruff_lsp = {
-					cmd_env = { RUFF_TRACE = "messages" },
-
-					init_options = {
-						settings = {
-							logLevel = "error",
-						},
-					},
-				},
 				prismals = {},
 				dockerls = {},
 				docker_compose_language_service = {},
@@ -77,22 +68,19 @@ return {
 				},
 			}
 
-			-- Special setup for tailwindcss filetypes
+			-- Handle tailwindcss filetypes: start from defaults, remove excluded, add included
 			local tailwind_config = server_configs.tailwindcss
-			tailwind_config.filetypes = tailwind_config.filetypes or {}
+			local tailwind_defaults = vim.lsp.config.tailwindcss
+			if tailwind_defaults then
+				tailwind_config.filetypes = vim.tbl_filter(function(ft)
+					return not vim.tbl_contains(tailwind_config.filetypes_exclude or {}, ft)
+				end, tailwind_defaults.filetypes or {})
+				vim.list_extend(tailwind_config.filetypes, tailwind_config.filetypes_include or {})
+			end
+			tailwind_config.filetypes_exclude = nil
+			tailwind_config.filetypes_include = nil
 
-			-- Add default filetypes
-			vim.list_extend(tailwind_config.filetypes, vim.lsp.config.tailwindcss.filetypes or {})
-
-			-- Remove excluded filetypes
-			tailwind_config.filetypes = vim.tbl_filter(function(ft)
-				return not vim.tbl_contains(tailwind_config.filetypes_exclude or {}, ft)
-			end, tailwind_config.filetypes)
-
-			-- Add additional filetypes
-			vim.list_extend(tailwind_config.filetypes, tailwind_config.filetypes_include or {})
-
-			-- Define configs using the new Neovim LSP API
+			-- Define configs using the new Neovim 0.11+ LSP API
 			for server, config in pairs(server_configs) do
 				config.capabilities = capabilities
 				vim.lsp.config[server] = config
@@ -115,7 +103,7 @@ return {
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(ev)
 					local client = vim.lsp.get_client_by_id(ev.data.client_id)
-					if client and (client.name == "ruff" or client.name == "ruff_lsp") then
+					if client and client.name == "ruff" then
 						vim.keymap.set("n", "<leader>co", function()
 							vim.lsp.buf.code_action({
 								context = {

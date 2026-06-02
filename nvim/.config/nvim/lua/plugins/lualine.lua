@@ -6,7 +6,7 @@ return {
 			require("lualine").setup({
 				options = {
 					theme = "material", -- Matches your colorscheme
-					globalstatusline = true, -- Single statusline for all windows (Neovim 0.7+)
+					globalstatus = true, -- Single statusline for all windows
 					icons_enabled = true,
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
