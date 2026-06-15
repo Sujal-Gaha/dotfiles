@@ -15,8 +15,10 @@ return {
 			vim.keymap.set({ "i", "s" }, "<Tab>", function()
 				if ls.expand_or_jumpable() then
 					ls.expand_or_jump()
+					return ""
 				end
-			end, { silent = true })
+				return "<Tab>"
+			end, { expr = true, silent = true })
 
 			vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
 				if ls.jumpable(-1) then
