@@ -42,4 +42,37 @@ except {}:
 			{ i(1, "pass"), i(2, "Exception"), i(3, "raise") }
 		)
 	),
+
+	-- pan -> Import pandas
+	s(
+		"pan",
+		fmt(
+			[[
+      import pandas as pd
+      ]],
+			{}
+		)
+	),
+
+	-- num -> Import numpy
+	s(
+		"num",
+		fmt(
+			[[
+      import numpy as np
+      ]],
+			{}
+		)
+	),
+
+	-- pyp -> Import matplotlib pyplot
+	s(
+		"pyp",
+		fmt(
+			[[
+      import matplotlib.pyplot as plt
+      ]],
+			{}
+		)
+	),
 }

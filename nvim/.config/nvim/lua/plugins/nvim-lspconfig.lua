@@ -103,7 +103,7 @@ return {
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(ev)
 					local client = vim.lsp.get_client_by_id(ev.data.client_id)
-					if client and client.name == "ruff" then
+					if client and vim.tbl_contains({ "ruff", "ts_ls", "vtsls", "gopls" }, client.name) then
 						vim.keymap.set("n", "<leader>co", function()
 							vim.lsp.buf.code_action({
 								context = {

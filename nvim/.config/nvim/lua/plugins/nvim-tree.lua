@@ -8,8 +8,8 @@ return {
 					sorter = "case_sensitive",
 				},
 				view = {
-					width = 30, -- Sidebar width
-					side = "left",
+					width = 40, -- Sidebar width
+					side = "right",
 				},
 				renderer = {
 					group_empty = true, -- Collapse empty folders
