@@ -9,6 +9,28 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+			local function find_python_venv(start_dir)
+				if not start_dir or start_dir == "" then
+					return nil, nil
+				end
+				local venv_dir = vim.fs.find({ ".venv", "venv" }, {
+					path = start_dir,
+					upward = true,
+					type = "directory",
+				})[1]
+				if venv_dir then
+					local py_bin = venv_dir .. "/bin/python"
+					if vim.fn.filereadable(py_bin) == 1 then
+						return py_bin, venv_dir
+					end
+					local py_win = venv_dir .. "/Scripts/python.exe"
+					if vim.fn.filereadable(py_win) == 1 then
+						return py_win, venv_dir
+					end
+				end
+				return nil, nil
+			end
+
 			local server_configs = {
 				lua_ls = {
 					settings = {
@@ -17,7 +39,44 @@ return {
 						},
 					},
 				},
-				pyright = {},
+				pyright = {
+					root_markers = {
+						{
+							"pyproject.toml",
+							"setup.py",
+							"setup.cfg",
+							"requirements.txt",
+							"Pipfile",
+							"pyrightconfig.json",
+							".venv",
+							"venv",
+						},
+						".git",
+					},
+					settings = {
+						python = {
+							analysis = {
+								autoSearchPaths = true,
+								useLibraryCodeForTypes = true,
+								diagnosticMode = "openFilesOnly",
+							},
+						},
+					},
+					before_init = function(_, config)
+						local py_bin, venv_dir = find_python_venv(config.root_dir)
+						if py_bin then
+							config.settings = config.settings or {}
+							config.settings.python = config.settings.python or {}
+							if not config.settings.python.pythonPath then
+								config.settings.python.pythonPath = py_bin
+							end
+							local venv_name = vim.fs.basename(venv_dir)
+							local venv_parent = vim.fs.dirname(venv_dir)
+							config.settings.python.venv = venv_name
+							config.settings.python.venvPath = venv_parent
+						end
+					end,
+				},
 				ts_ls = {
 					settings = {
 						typescript = {
@@ -29,11 +88,28 @@ return {
 				},
 				ruff = {
 					cmd_env = { RUFF_TRACE = "messages" },
+					root_markers = {
+						{
+							"pyproject.toml",
+							"ruff.toml",
+							".ruff.toml",
+							".venv",
+							"venv",
+						},
+						".git",
+					},
 					init_options = {
 						settings = {
 							logLevel = "error",
 						},
 					},
+					before_init = function(_, config)
+						local _, venv_dir = find_python_venv(config.root_dir)
+						if venv_dir then
+							config.cmd_env = config.cmd_env or {}
+							config.cmd_env.VIRTUAL_ENV = venv_dir
+						end
+					end,
 				},
 				prismals = {},
 				dockerls = {},

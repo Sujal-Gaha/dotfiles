@@ -8,7 +8,7 @@ return {
 					sorter = "case_sensitive",
 				},
 				view = {
-					width = 40, -- Sidebar width
+					width = 30, -- Sidebar width
 					side = "right",
 				},
 				renderer = {
