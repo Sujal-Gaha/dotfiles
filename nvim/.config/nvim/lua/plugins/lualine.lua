@@ -5,7 +5,7 @@ return {
 		config = function()
 			require("lualine").setup({
 				options = {
-					theme = "auto", -- Matches your active colorscheme (gruvbox)
+					theme = "material", -- User preferred theme
 					globalstatus = true, -- Single statusline for all windows
 					icons_enabled = true,
 					component_separators = { left = "", right = "" },
