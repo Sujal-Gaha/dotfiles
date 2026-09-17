@@ -31,8 +31,27 @@ return {
 			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 				group = lint_augroup,
 				callback = function()
-					if vim.bo.modifiable then
-						lint.try_lint()
+					if not vim.bo.modifiable then
+						return
+					end
+
+					local names = lint._resolve_linter_by_ft(vim.bo.filetype)
+					local valid_names = {}
+					for _, name in ipairs(names) do
+						local linter = lint.linters[name]
+						if type(linter) == "function" then
+							linter = linter()
+						end
+						if linter and linter.cmd then
+							local cmd = type(linter.cmd) == "function" and linter.cmd() or linter.cmd
+							if cmd and vim.fn.executable(cmd) == 1 then
+								table.insert(valid_names, name)
+							end
+						end
+					end
+
+					if #valid_names > 0 then
+						lint.try_lint(valid_names, { ignore_errors = true })
 					end
 				end,
 			})

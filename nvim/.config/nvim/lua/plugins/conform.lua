@@ -21,6 +21,7 @@ return {
 					timeout_ms = 10000,
 					lsp_fallback = false,
 				},
+				notify_no_formatters = false,
 			})
 
 			vim.keymap.set({ "n", "v" }, "<leader>f", function()
