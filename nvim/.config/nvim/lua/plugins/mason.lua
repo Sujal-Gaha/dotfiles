@@ -20,6 +20,7 @@ return {
 				"shfmt",
 				"markdownlint-cli2",
 				"tree-sitter-cli",
+				"debugpy",
 			}
 			mr.refresh(function()
 				for _, tool in ipairs(ensure_installed) do
@@ -36,7 +37,18 @@ return {
 		dependencies = { "williamboman/mason.nvim" },
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pyright", "ts_ls", "ruff" },
+				ensure_installed = {
+					"lua_ls",
+					"pyright",
+					"ts_ls",
+					"ruff",
+					"dockerls",
+					"docker_compose_language_service",
+					"jsonls",
+					"marksman",
+					"tailwindcss",
+					"prismals",
+				},
 				automatic_installation = true,
 			})
 		end,

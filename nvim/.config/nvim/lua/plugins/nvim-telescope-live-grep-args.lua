@@ -6,7 +6,7 @@ return {
 			require("telescope").load_extension("live_grep_args")
 		end,
 		keys = {
-			{ "<leader>fg", "<cmd>Telescope live_grep_args<cr>", desc = "Live Grep (with args)" },
+			{ "<leader>fG", "<cmd>Telescope live_grep_args<cr>", desc = "Live Grep (with args)" },
 		},
 	},
 }

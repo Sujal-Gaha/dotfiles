@@ -2,6 +2,10 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" }, -- For nice icons (requires Nerd Font)
+		init = function()
+			vim.g.loaded_netrw = 1
+			vim.g.loaded_netrwPlugin = 1
+		end,
 		config = function()
 			require("nvim-tree").setup({
 				sort = {

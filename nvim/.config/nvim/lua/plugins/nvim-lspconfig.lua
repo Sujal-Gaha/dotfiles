@@ -162,35 +162,6 @@ return {
 				vim.lsp.config[server] = config
 			end
 
-			vim.api.nvim_create_autocmd("LspAttach", {
-				callback = function(ev)
-					local client = vim.lsp.get_client_by_id(ev.data.client_id)
-					if client then
-						client.server_capabilities.documentFormattingProvider = false
-						client.server_capabilities.documentRangeFormattingProvider = false
-
-						if client.name == "ruff" then
-							client.server_capabilities.hoverProvider = false
-						end
-					end
-				end,
-			})
-
-			vim.api.nvim_create_autocmd("LspAttach", {
-				callback = function(ev)
-					local client = vim.lsp.get_client_by_id(ev.data.client_id)
-					if client and vim.tbl_contains({ "ruff", "ts_ls", "vtsls", "gopls" }, client.name) then
-						vim.keymap.set("n", "<leader>co", function()
-							vim.lsp.buf.code_action({
-								context = {
-									only = { "source.organizeImports" },
-								},
-								apply = true,
-							})
-						end, { buffer = ev.buf, desc = "Organize Imports" })
-					end
-				end,
-			})
 		end,
 	},
 }

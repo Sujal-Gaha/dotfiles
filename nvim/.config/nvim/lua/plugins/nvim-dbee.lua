@@ -3,7 +3,7 @@ return {
 		"kndndrj/nvim-dbee",
 		dependencies = { "MunifTanjim/nui.nvim" },
 		build = function()
-			require("dbee").install("go") -- installs Go binary if needed
+			require("dbee").install("curl")
 		end,
 		config = function()
 			-- Pull values from environment variables (set in your shell / .env)

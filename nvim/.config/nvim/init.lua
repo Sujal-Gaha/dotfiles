@@ -22,6 +22,3 @@ require("lazy").setup("plugins")
 require("config.keymaps")
 require("config.autocmds")
 require("config.ui")
-
--- 5. Load your local environment variables
-require("plugins.dotenv")

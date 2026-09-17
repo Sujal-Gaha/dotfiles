@@ -39,9 +39,11 @@ return {
 								vim.env.PATH = bin_dir .. ":" .. (vim.env.PATH or "")
 							end
 							vim.schedule(function()
-								local ok, vs = pcall(require, "venv-selector")
-								if ok and vs and vs.python and vs.python() ~= py_bin then
-									pcall(vs.activate_from_path, py_bin, "venv")
+								if vim.fn.executable("fd") == 1 or vim.fn.executable("fdfind") == 1 then
+									local ok, vs = pcall(require, "venv-selector")
+									if ok and vs and vs.python and vs.python() ~= py_bin then
+										pcall(vs.activate_from_path, py_bin, "venv")
+									end
 								end
 							end)
 						end

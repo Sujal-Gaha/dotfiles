@@ -1,13 +1,10 @@
--- Force folding settings on every file open
--- Removed global foldmethod="expr" to prevent lag and conflict with nvim-ufo
--- nvim-ufo handles this more efficiently.
+-- General Autocommands
 
-
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client then
-			client.server_capabilities.colorProvider = false
-		end
+-- Highlight on yank
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = highlight_group,
+	callback = function()
+		vim.highlight.on_yank()
 	end,
 })
