@@ -11,7 +11,17 @@ return {
 				python = { "ruff" },
 			}
 
-			lint.linters.ruff = lint.linters.ruff or {}
+			lint.linters["markdownlint-cli2"] = lint.linters["markdownlint-cli2"] or {}
+		lint.linters["markdownlint-cli2"].args = {
+			"--config",
+			vim.fn.expand("~/.markdownlint.json"),
+			"--stdin-filename",
+			function()
+				return vim.api.nvim_buf_get_name(0)
+			end,
+			"-",
+		}
+
 			lint.linters.ruff.args = {
 				"check",
 				"--force-exclude",
