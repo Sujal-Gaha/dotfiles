@@ -11,6 +11,7 @@ return {
 					["javascriptreact"] = { "prettier" },
 					["typescriptreact"] = { "prettier" },
 					["python"] = { "black" },
+					["go"] = { "gofmt" },
 					["sh"] = { "shfmt" },
 					["bash"] = { "shfmt" },
 					["markdown"] = { "prettier" },

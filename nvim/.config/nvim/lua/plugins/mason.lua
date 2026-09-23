@@ -19,6 +19,7 @@ return {
 				"black",
 				"shfmt",
 				"markdownlint-cli2",
+				"golangci-lint",
 				"tree-sitter-cli",
 				"debugpy",
 			}
@@ -45,6 +46,7 @@ return {
 					"dockerls",
 					"docker_compose_language_service",
 					"jsonls",
+					"gopls",
 					"marksman",
 					"tailwindcss",
 					"prismals",

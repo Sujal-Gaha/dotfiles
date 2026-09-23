@@ -9,7 +9,8 @@ return {
 			lint.linters_by_ft = {
 				markdown = { "markdownlint-cli2" },
 				python = { "ruff" },
-			}
+				go = { "golangci-lint" },
+				}
 
 			lint.linters["markdownlint-cli2"] = lint.linters["markdownlint-cli2"] or {}
 		lint.linters["markdownlint-cli2"].args = {

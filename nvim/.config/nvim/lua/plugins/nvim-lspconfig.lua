@@ -112,6 +112,7 @@ return {
 					end,
 				},
 				prismals = {},
+				gopls = {},
 				dockerls = {},
 				docker_compose_language_service = {},
 				jsonls = {
@@ -157,10 +158,11 @@ return {
 			tailwind_config.filetypes_include = nil
 
 			-- Define configs using the new Neovim 0.11+ LSP API
-			for server, config in pairs(server_configs) do
-				config.capabilities = capabilities
-				vim.lsp.config[server] = config
-			end
+					for server, config in pairs(server_configs) do
+						config.capabilities = capabilities
+						vim.lsp.config[server] = config
+						vim.lsp.enable(server)
+					end
 
 		end,
 	},

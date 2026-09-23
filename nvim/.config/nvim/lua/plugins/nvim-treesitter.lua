@@ -13,6 +13,7 @@ return {
 				"bash",
 				"c",
 				"diff",
+				"go",
 				"dockerfile",
 				"html",
 				"javascript",
